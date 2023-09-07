@@ -1,29 +1,51 @@
+# Especifica la versión de Docker Compose que se está utilizando.
 version: '3'
+
+# Define los servicios (contenedores) que se ejecutarán.
 services:
-  master:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: ["master", "50051"]
-    tty: true
-    stdin_open: true
-    ports:
-      - "50051:50051"
-    networks:
-      - cache_network
+	
+# Servicio "master"
+	master:
+	# Detalles para construir la imagen Docker
+	build:
+		# Contexto de construcción es el directorio actual
+		context: .
+		# Usa el archivo Dockerfile en el directorio actual para construir la imagen
+		dockerfile: Dockerfile
 
-  slave:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: ["slave", "50051", "--master_ip", "master", "--master_port", "50051"]
-    tty: true
-    stdin_open: true
-    networks:
-      - cache_network
-    restart: always
-    depends_on: 
-      - master
+	# Comando a ejecutar cuando se inicie el contenedor
+	command: ["master", "50051"]
+	# Ejecutar contenedor en modo interactivo
+	tty: true
+	stdin_open: true
+	# Mapeo de puertos: puerto del host:puerto del contenedor
+	ports:
+		- "50051:50051"
+	# Redes a las que se conectará este contenedor
+	networks:
+		- cache_network
 
+	# Servicio "slave"
+	slave:
+	# Similar al proceso de construcción de "master"
+	build:
+		context: .
+		dockerfile: Dockerfile
+
+	# Comando a ejecutar: conecta al "master" en la IP "master" y puerto 50051
+	command: ["slave", "50051", "--master_ip", "master", "--master_port", "50051"]
+	# Ejecutar contenedor en modo interactivo
+	tty: true
+	stdin_open: true
+	# Redes a las que se conectará este contenedor
+	networks:
+		- cache_network
+	# Si el contenedor se detiene, Docker intentará reiniciarlo automáticamente
+	restart: always
+	# Asegura que "slave" solo se inicie después de que "master" haya comenzado
+	depends_on: 
+		- master
+
+# Define redes personalizadas. Los contenedores pueden comunicarse entre sí en esta red usando el nombre del servicio como nombre de host.
 networks:
-  cache_network:
+	cache_network:

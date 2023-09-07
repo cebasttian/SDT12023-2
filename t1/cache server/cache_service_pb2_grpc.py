@@ -6,39 +6,39 @@ import cache_service_pb2 as cache__service__pb2
 
 
 class CacheServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+	"""Missing associated documentation comment in .proto file."""
 
-    def __init__(self, channel):
-        """Constructor.
+	def __init__(self, channel):
+		"""Constructor.
 
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.RegisterNode = channel.unary_unary(
-                '/CacheService/RegisterNode',
-                request_serializer=cache__service__pb2.NodeInfo.SerializeToString,
-                response_deserializer=cache__service__pb2.Response.FromString,
-                )
-        self.DeregisterNode = channel.unary_unary(
-                '/CacheService/DeregisterNode',
-                request_serializer=cache__service__pb2.NodeInfo.SerializeToString,
-                response_deserializer=cache__service__pb2.Response.FromString,
-                )
-        self.Get = channel.unary_unary(
-                '/CacheService/Get',
-                request_serializer=cache__service__pb2.Key.SerializeToString,
-                response_deserializer=cache__service__pb2.CacheItem.FromString,
-                )
-        self.Put = channel.unary_unary(
-                '/CacheService/Put',
-                request_serializer=cache__service__pb2.CacheItem.SerializeToString,
-                response_deserializer=cache__service__pb2.Response.FromString,
-                )
-        self.Remove = channel.unary_unary(
-                '/CacheService/Remove',
-                request_serializer=cache__service__pb2.Key.SerializeToString,
-                response_deserializer=cache__service__pb2.Response.FromString,
-                )
+		Args:
+			channel: A grpc.Channel.
+		"""
+		self.RegisterNode = channel.unary_unary(
+			'/CacheService/RegisterNode',
+			request_serializer=cache__service__pb2.NodeInfo.SerializeToString,
+			response_deserializer=cache__service__pb2.Response.FromString,
+		)
+		self.DeregisterNode = channel.unary_unary(
+			'/CacheService/DeregisterNode',
+			request_serializer=cache__service__pb2.NodeInfo.SerializeToString,
+			response_deserializer=cache__service__pb2.Response.FromString,
+		)
+		self.Get = channel.unary_unary(
+			'/CacheService/Get',
+			request_serializer=cache__service__pb2.Key.SerializeToString,
+			response_deserializer=cache__service__pb2.CacheItem.FromString,
+		)
+		self.Put = channel.unary_unary(
+			'/CacheService/Put',
+			request_serializer=cache__service__pb2.CacheItem.SerializeToString,
+			response_deserializer=cache__service__pb2.Response.FromString,
+		)
+		self.Remove = channel.unary_unary(
+			'/CacheService/Remove',
+			request_serializer=cache__service__pb2.Key.SerializeToString,
+			response_deserializer=cache__service__pb2.Response.FromString,
+		)
 
 
 class CacheServiceServicer(object):
