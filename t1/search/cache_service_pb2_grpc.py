@@ -6,39 +6,39 @@ import cache_service_pb2 as cache__service__pb2
 
 
 class CacheServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+	"""Missing associated documentation comment in .proto file."""
 
-    def __init__(self, channel):
-        """Constructor.
+	def __init__(self, channel):
+		"""Constructor.
 
         Args:
             channel: A grpc.Channel.
         """
-        self.RegisterNode = channel.unary_unary(
-                '/CacheService/RegisterNode',
-                request_serializer=cache__service__pb2.NodeInfo.SerializeToString,
-                response_deserializer=cache__service__pb2.Response.FromString,
-                )
-        self.DeregisterNode = channel.unary_unary(
-                '/CacheService/DeregisterNode',
-                request_serializer=cache__service__pb2.NodeInfo.SerializeToString,
-                response_deserializer=cache__service__pb2.Response.FromString,
-                )
-        self.Get = channel.unary_unary(
-                '/CacheService/Get',
-                request_serializer=cache__service__pb2.Key.SerializeToString,
-                response_deserializer=cache__service__pb2.CacheItem.FromString,
-                )
-        self.Put = channel.unary_unary(
-                '/CacheService/Put',
-                request_serializer=cache__service__pb2.CacheItem.SerializeToString,
-                response_deserializer=cache__service__pb2.Response.FromString,
-                )
-        self.Remove = channel.unary_unary(
-                '/CacheService/Remove',
-                request_serializer=cache__service__pb2.Key.SerializeToString,
-                response_deserializer=cache__service__pb2.Response.FromString,
-                )
+		self.RegisterNode = channel.unary_unary(
+            '/CacheService/RegisterNode',
+            request_serializer=cache__service__pb2.NodeInfo.SerializeToString,
+            response_deserializer=cache__service__pb2.Response.FromString,
+        )
+		self.DeregisterNode = channel.unary_unary(
+            '/CacheService/DeregisterNode',
+            request_serializer=cache__service__pb2.NodeInfo.SerializeToString,
+            response_deserializer=cache__service__pb2.Response.FromString,
+        )
+		self.Get = channel.unary_unary(
+            '/CacheService/Get',
+            request_serializer=cache__service__pb2.Key.SerializeToString,
+            response_deserializer=cache__service__pb2.CacheItem.FromString,
+        )
+		self.Put = channel.unary_unary(
+            '/CacheService/Put',
+            request_serializer=cache__service__pb2.CacheItem.SerializeToString,
+            response_deserializer=cache__service__pb2.Response.FromString,
+        )
+		self.Remove = channel.unary_unary(
+            '/CacheService/Remove',
+            request_serializer=cache__service__pb2.Key.SerializeToString,
+            response_deserializer=cache__service__pb2.Response.FromString,
+        )
 
 
 class CacheServiceServicer(object):
@@ -77,52 +77,52 @@ class CacheServiceServicer(object):
 
 def add_CacheServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'RegisterNode': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegisterNode,
-                    request_deserializer=cache__service__pb2.NodeInfo.FromString,
-                    response_serializer=cache__service__pb2.Response.SerializeToString,
-            ),
-            'DeregisterNode': grpc.unary_unary_rpc_method_handler(
-                    servicer.DeregisterNode,
-                    request_deserializer=cache__service__pb2.NodeInfo.FromString,
-                    response_serializer=cache__service__pb2.Response.SerializeToString,
-            ),
-            'Get': grpc.unary_unary_rpc_method_handler(
-                    servicer.Get,
-                    request_deserializer=cache__service__pb2.Key.FromString,
-                    response_serializer=cache__service__pb2.CacheItem.SerializeToString,
-            ),
-            'Put': grpc.unary_unary_rpc_method_handler(
-                    servicer.Put,
-                    request_deserializer=cache__service__pb2.CacheItem.FromString,
-                    response_serializer=cache__service__pb2.Response.SerializeToString,
-            ),
-            'Remove': grpc.unary_unary_rpc_method_handler(
-                    servicer.Remove,
-                    request_deserializer=cache__service__pb2.Key.FromString,
-                    response_serializer=cache__service__pb2.Response.SerializeToString,
-            ),
+        'RegisterNode': grpc.unary_unary_rpc_method_handler(
+            servicer.RegisterNode,
+            request_deserializer=cache__service__pb2.NodeInfo.FromString,
+            response_serializer=cache__service__pb2.Response.SerializeToString,
+        ),
+        'DeregisterNode': grpc.unary_unary_rpc_method_handler(
+            servicer.DeregisterNode,
+            request_deserializer=cache__service__pb2.NodeInfo.FromString,
+            response_serializer=cache__service__pb2.Response.SerializeToString,
+        ),
+        'Get': grpc.unary_unary_rpc_method_handler(
+            servicer.Get,
+            request_deserializer=cache__service__pb2.Key.FromString,
+            response_serializer=cache__service__pb2.CacheItem.SerializeToString,
+        ),
+        'Put': grpc.unary_unary_rpc_method_handler(
+            servicer.Put,
+            request_deserializer=cache__service__pb2.CacheItem.FromString,
+            response_serializer=cache__service__pb2.Response.SerializeToString,
+        ),
+        'Remove': grpc.unary_unary_rpc_method_handler(
+            servicer.Remove,
+            request_deserializer=cache__service__pb2.Key.FromString,
+            response_serializer=cache__service__pb2.Response.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'CacheService', rpc_method_handlers)
+        'CacheService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class CacheService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def RegisterNode(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None):
         return grpc.experimental.unary_unary(request, target, '/CacheService/RegisterNode',
             cache__service__pb2.NodeInfo.SerializeToString,
             cache__service__pb2.Response.FromString,
@@ -131,15 +131,15 @@ class CacheService(object):
 
     @staticmethod
     def DeregisterNode(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None):
         return grpc.experimental.unary_unary(request, target, '/CacheService/DeregisterNode',
             cache__service__pb2.NodeInfo.SerializeToString,
             cache__service__pb2.Response.FromString,
@@ -148,15 +148,15 @@ class CacheService(object):
 
     @staticmethod
     def Get(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None):
         return grpc.experimental.unary_unary(request, target, '/CacheService/Get',
             cache__service__pb2.Key.SerializeToString,
             cache__service__pb2.CacheItem.FromString,
@@ -165,15 +165,15 @@ class CacheService(object):
 
     @staticmethod
     def Put(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None):
         return grpc.experimental.unary_unary(request, target, '/CacheService/Put',
             cache__service__pb2.CacheItem.SerializeToString,
             cache__service__pb2.Response.FromString,
@@ -182,15 +182,15 @@ class CacheService(object):
 
     @staticmethod
     def Remove(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None):
         return grpc.experimental.unary_unary(request, target, '/CacheService/Remove',
             cache__service__pb2.Key.SerializeToString,
             cache__service__pb2.Response.FromString,
